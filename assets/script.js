@@ -4,15 +4,15 @@
 setInterval(function() {
   $('#time-display').text(dayjs().format('MMM D YYYY, h:mm:ss'));
 }, 1000);
-function updateClock() {
+function checkCurrentHour() {
   //compares current hour to block time in the workday planner.
 }
 let currentHour= dayjs().hour();
   $("#hour").each(function() {
-    let hour = parseInt($(this).attr("id").split("-")[1]);
-    if (hour < currentHour)$("p").css("background-color", "green");
-    if (hour > currentHour)$("p").css("background-color", "grey"); 
-    if (hour == currentHour)$("p").css("background-color", "red");
+    let currentHour = parseInt($(this).attr("id").split("-")[1]);
+    if (hour < currentHour) $(this).children("textarea").css("background-color", "green");
+    if (hour > currentHour) $(this).children("textarea").css("background-color", "grey"); 
+    if (hour == currentHour) $(this).children("textarea").css("background-color", "red");
   })
 $(".saveBtn").on("click", function(){
   var value = $(this).siblings('.description').val();
